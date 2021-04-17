@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../css/index.css";
 import Header from "./Header";
+import MovieTitle from "./MovieTitle";
 import ListOfMovies from "./ListOfMovies";
 
 const App = () => {
@@ -32,12 +33,13 @@ const App = () => {
 
     return (
         <div className="container-fluid star-movies">
-            <div className="row d-flex align-items-center text-center">
-                <Header header="StarMovies"></Header>
-            </div>
+            <Header></Header>
+            <MovieTitle header="Movies"></MovieTitle>
             <div className="row py-3">
                 <ListOfMovies movies={movies}></ListOfMovies>
             </div>
+
+            <MovieTitle header="Favourites"></MovieTitle>
         </div>
     );
 };

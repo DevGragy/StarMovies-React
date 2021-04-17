@@ -1,12 +1,12 @@
 import React from "react";
 import "../css/header.css";
 
-function MovieHeader(props) {
+function Header(props) {
     return (
-        <div className="col header-movies">
-            <h1>{props.header}</h1>
+        <div className="row d-flex justify-content-center align-items-center header">
+            <h1>StarMovies</h1>
         </div>
     );
 }
 
-export default MovieHeader;
+export default Header;
