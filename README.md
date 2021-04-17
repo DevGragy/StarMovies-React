@@ -4,8 +4,8 @@ Starmovies es un proyecto hecho en React que permite manejar datos de películas
 
 ## Especificaciones
 
-Starmovies es un sitio donde se puede consultar información sobre un cátalogo extenso de películas.
-Se podrá seleccionar una película con el cursor y al hacer click se mostrará la información de ella como su título, categoría, rating, descripción, entre otros.
+-   Starmovies es un sitio donde se puede consultar información sobre un cátalogo extenso de películas.
+-   Se podrá seleccionar una película con el cursor y al hacer click se mostrará la información de ella como su título, categoría, rating, descripción, entre otros.
 
 ## Scripts disponibles
 
