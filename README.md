@@ -17,3 +17,8 @@ Este comando inicia la aplicación en modo de desarollo y abre [http://localhost
 
 La página se recargará si realiza modificaciones. \
 También se verán los errores en la consola.
+
+## Netlify
+
+El sitio web en funcionamiento se puede consultar en el siguiente [enlace](https://kind-euclid-554a3c.netlify.app/) de Netlify.
+
