@@ -7,7 +7,7 @@ import Home from "./Home";
 import Error404 from "./Error404";
 import InfoMovie from "./InfoMovie";
 
-const URL = "`http://www.omdbapi.com/?s=&apikey=e8d51da1`";
+const URL = `http://www.omdbapi.com/?s=&apikey=e8d51da1`;
 
 function App(props) {
     const [movies, setMovies] = useState([]);

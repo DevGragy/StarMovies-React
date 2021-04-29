@@ -8,7 +8,7 @@ function InfoMovie(props) {
     React.useEffect(
         function () {
             const getMovies = async () => {
-                const response = await fetch(`${props.url}/${id}`);
+                const response = await fetch(`${props.url}&i=${id}`);
                 const data = await response.json();
 
                 setMovies(data);
