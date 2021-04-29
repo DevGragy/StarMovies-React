@@ -1,5 +1,4 @@
 import React from "react";
-import "../css/movieheader.css";
 
 function MovieTitle(props) {
     return (
