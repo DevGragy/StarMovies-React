@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from "react";
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    useParams,
-    useRouteMatch,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "../css/index.css";
+import Grid from "@material-ui/core/Grid";
+import Container from "@material-ui/core/Container";
 import Home from "./Home";
 import Error404 from "./Error404";
 import InfoMovie from "./InfoMovie";
@@ -31,30 +26,32 @@ function App(props) {
     }, [search]);
 
     return (
-        <Router>
-            <Switch>
-                <Route
-                    exact
-                    path="/"
-                    render={(props) => (
-                        <Home
-                            {...props}
-                            search={search}
-                            setSearch={setSearch}
-                            movies={movies}
-                            setMovies={setMovies}
-                        />
-                    )}
-                ></Route>
-                <Route
-                    path="/details/:id"
-                    render={(props) => (
-                        <InfoMovie {...props} url={URL}></InfoMovie>
-                    )}
-                ></Route>
-                <Route path="*" component={Error404}></Route>
-            </Switch>
-        </Router>
+        <Container>
+            <Router>
+                <Switch>
+                    <Route
+                        exact
+                        path="/"
+                        render={(props) => (
+                            <Home
+                                {...props}
+                                search={search}
+                                setSearch={setSearch}
+                                movies={movies}
+                                setMovies={setMovies}
+                            />
+                        )}
+                    ></Route>
+                    <Route
+                        path="/details/:id"
+                        render={(props) => (
+                            <InfoMovie {...props} url={URL}></InfoMovie>
+                        )}
+                    ></Route>
+                    <Route path="*" component={Error404}></Route>
+                </Switch>
+            </Router>
+        </Container>
     );
 }
 
