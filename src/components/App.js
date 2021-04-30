@@ -12,6 +12,7 @@ const URL = `http://www.omdbapi.com/?s=&apikey=e8d51da1`;
 function App(props) {
     const [movies, setMovies] = useState([]);
     const [search, setSearch] = useState("");
+    const [startMovies, setStartMovies] = useState([]);
 
     const fetchAPI = async (search) => {
         const URL = `http://www.omdbapi.com/?s=${search}&apikey=e8d51da1`;
@@ -19,6 +20,13 @@ function App(props) {
         const responseJSON = await response.json();
 
         if (responseJSON.Search) return setMovies(responseJSON.Search);
+    };
+
+    const initialMovies = async () => {
+        const URL = `http://www.omdbapi.com/?apikey=e8d51da1&s=star+wars`;
+        const response = await fetch(URL);
+        const responseJSON = await response.json();
+        setStartMovies(responseJSON);
     };
 
     useEffect(() => {

@@ -1,8 +1,14 @@
 import React from "react";
+import Grid from "@material-ui/core/Grid";
+import Container from "@material-ui/core/Container";
 import { Link } from "react-router-dom";
 
 function InfoMovie(props) {
-    const [movies, setMovies] = React.useState({ Title: "", Poster: "" });
+    const [movies, setMovies] = React.useState({
+        Title: "",
+        Poster: "",
+        Plot: "",
+    });
     const id = props.match.params.id;
 
     React.useEffect(
@@ -20,19 +26,16 @@ function InfoMovie(props) {
     );
 
     return (
-        <div className="main-card-error d-flex justify-content-center align-items-center">
-            <div class="card my-5" style={{ width: 18 + "rem" }}>
-                <div class="card-header">
+        <Container>
+            <div class="d-flex my-5 justify-content-center">
+                <img src={movies.Poster} alt="Movie"></img>
+                <div>
                     <h1>{movies.Title}</h1>
-                </div>
-                <div class="card-body">
-                    <img src={movies.Poster} alt="Movie"></img>
-                </div>
-                <div class="card-footer">
-                    <Link to="/">Home</Link>
+                    <p>{movies.Plot}</p>
                 </div>
             </div>
-        </div>
+            <Link to="/">Home</Link>
+        </Container>
     );
 }
 
