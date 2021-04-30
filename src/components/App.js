@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "../css/index.css";
-import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import Home from "./Home";
 import Error404 from "./Error404";
@@ -12,6 +11,7 @@ const URL = `http://www.omdbapi.com/?s=&apikey=e8d51da1`;
 function App(props) {
     const [movies, setMovies] = useState([]);
     const [search, setSearch] = useState("");
+    const [startMovies, setStartMovies] = useState([]);
 
     const fetchAPI = async (search) => {
         const URL = `http://www.omdbapi.com/?s=${search}&apikey=e8d51da1`;
@@ -19,6 +19,13 @@ function App(props) {
         const responseJSON = await response.json();
 
         if (responseJSON.Search) return setMovies(responseJSON.Search);
+    };
+
+    const initialMovies = async () => {
+        const URL = `http://www.omdbapi.com/?apikey=e8d51da1&s=star+wars`;
+        const response = await fetch(URL);
+        const responseJSON = await response.json();
+        setStartMovies(responseJSON);
     };
 
     useEffect(() => {

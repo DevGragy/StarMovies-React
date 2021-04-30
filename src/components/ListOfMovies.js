@@ -9,7 +9,7 @@ function ListOfMovies(props) {
             {props.movies.map((movie, index) => (
                 <div className="image-container d-flex m-2 justify-content-start">
                     <Link to={`details/${movie.imdbID}`}>
-                        <img src={movie.Poster} alt="Movie"></img>
+                        <img src={movie.Poster} alt={movie.Title}></img>
                     </Link>
                 </div>
             ))}
