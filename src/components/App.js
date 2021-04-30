@@ -11,7 +11,7 @@ const URL = `http://www.omdbapi.com/?s=&apikey=e8d51da1`;
 function App(props) {
     const [movies, setMovies] = useState([]);
     const [search, setSearch] = useState("");
-    const [startMovies, setStartMovies] = useState([]);
+    const [favourite, setFavourite] = useState([]);
 
     const fetchAPI = async (search) => {
         const URL = `http://www.omdbapi.com/?s=${search}&apikey=e8d51da1`;
@@ -21,11 +21,17 @@ function App(props) {
         if (responseJSON.Search) return setMovies(responseJSON.Search);
     };
 
-    const initialMovies = async () => {
-        const URL = `http://www.omdbapi.com/?apikey=e8d51da1&s=star+wars`;
-        const response = await fetch(URL);
-        const responseJSON = await response.json();
-        setStartMovies(responseJSON);
+    const addFavourite = (movies) => {
+        const newFavList = [...favourite, movies];
+        setFavourite(newFavList);
+    };
+
+    const removeFavourite = (movie) => {
+        const newFavList = favourite.filter(
+            (fav) => fav.imdbID !== movie.imdbID
+        );
+
+        setFavourite(newFavList);
     };
 
     useEffect(() => {
@@ -46,11 +52,15 @@ function App(props) {
                                 setSearch={setSearch}
                                 movies={movies}
                                 setMovies={setMovies}
+                                favourite={favourite}
+                                setFavourite={setFavourite}
+                                addFavourite={addFavourite}
+                                removeFavourite={removeFavourite}
                             />
                         )}
                     ></Route>
                     <Route
-                        path="/details/:id"
+                        path="/movies/:id"
                         render={(props) => (
                             <InfoMovie {...props} url={URL}></InfoMovie>
                         )}
