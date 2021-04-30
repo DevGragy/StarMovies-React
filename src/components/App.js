@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "../css/index.css";
-import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import Home from "./Home";
 import Error404 from "./Error404";

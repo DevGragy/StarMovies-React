@@ -1,11 +1,13 @@
 import React from "react";
+import Box from '@material-ui/core/Box';
+
 import "../css/header.css";
 
 function Header(props) {
     return (
-        <div className="row d-flex justify-content-center align-items-center header">
+        <Box display="flex" justifyContent="center" alignItems="center" m={10}> 
             <h1>StarMovies</h1>
-        </div>
+        </Box>
     );
 }
 
