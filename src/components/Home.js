@@ -11,6 +11,7 @@ import ListItem from "@material-ui/core/ListItem";
 import Divider from "@material-ui/core/Divider";
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core";
+import ListOfFavourite from "./ListOfFavourite";
 
 const useStyles = makeStyles({
     divider: {
@@ -62,11 +63,11 @@ function Home(props) {
                         justify="center"
                         alignItems="center"
                     >
-                        <ListOfMovies
-                            movies={props.movies}
+                        <ListOfFavourite
+                            favourite={props.favourite}
                             favouriteProp={RemoveFavourite}
                             removeFavourite={props.removeFavourite}
-                        ></ListOfMovies>
+                        ></ListOfFavourite>
                     </Grid>
                 </ListItem>
                 <Divider classes={{ root: classes.divider }} light={true} />
