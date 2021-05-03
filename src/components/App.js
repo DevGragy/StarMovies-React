@@ -21,8 +21,8 @@ function App(props) {
         if (responseJSON.Search) return setMovies(responseJSON.Search);
     };
 
-    const addFavourite = (movies) => {
-        const newFavList = [...favourite, movies];
+    const addFavourite = (movie) => {
+        const newFavList = [...favourite, movie];
         setFavourite(newFavList);
     };
 
