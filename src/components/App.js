@@ -5,6 +5,7 @@ import Container from "@material-ui/core/Container";
 import Home from "./Home";
 import Error404 from "./Error404";
 import InfoMovie from "./InfoMovie";
+import SignIn from "./SignIn";
 
 const URL = `http://www.omdbapi.com/?s=&apikey=e8d51da1`;
 
@@ -66,6 +67,7 @@ function App(props) {
                         )}
                     ></Route>
                     <Route path="*" component={Error404}></Route>
+                    <Route path="/login" component={SignIn}></Route>
                 </Switch>
             </Router>
         </Container>
