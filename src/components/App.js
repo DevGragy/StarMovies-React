@@ -59,17 +59,23 @@ function App(props) {
                                 removeFavourite={removeFavourite}
                             />
                         )}
-                    ></Route>
+                    ></Route>{" "}
                     <Route
                         path="/movies/:id"
                         render={(props) => (
-                            <InfoMovie {...props} url={URL}></InfoMovie>
+                            <InfoMovie {...props} url={URL}>
+                                {" "}
+                            </InfoMovie>
                         )}
-                    ></Route>
-                    <Route path="*" component={Error404}></Route>
-                    <Route path="/login" component={SignIn}></Route>
-                </Switch>
-            </Router>
+                    ></Route>{" "}
+                    <Route path="*" component={Error404}>
+                        {" "}
+                    </Route>{" "}
+                    <Route path="/signin">
+                        <SignIn></SignIn>
+                    </Route>
+                </Switch>{" "}
+            </Router>{" "}
         </Container>
     );
 }

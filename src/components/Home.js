@@ -12,6 +12,7 @@ import Divider from "@material-ui/core/Divider";
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core";
 import ListOfFavourite from "./ListOfFavourite";
+import SignIn from "./SignIn";
 
 const useStyles = makeStyles({
     divider: {
@@ -24,16 +25,16 @@ function Home(props) {
 
     return (
         <div className="star-movies">
-            <Header></Header>
+            <Header> </Header>{" "}
             <InputSearch
                 search={props.search}
                 setSearch={props.setSearch}
-            ></InputSearch>
+            ></InputSearch>{" "}
             <List>
-                <Divider classes={{ root: classes.divider }} light={true} />
+                <Divider classes={{ root: classes.divider }} light={true} />{" "}
                 <ListItem disableGutters={true}>
-                    <MovieTitle header="Search"></MovieTitle>
-                </ListItem>
+                    <MovieTitle header="Search"> </MovieTitle>{" "}
+                </ListItem>{" "}
                 <ListItem>
                     <Grid
                         container
@@ -47,13 +48,13 @@ function Home(props) {
                             movies={props.movies}
                             favouriteProp={AddToFavourite}
                             addFavourite={props.addFavourite}
-                        ></ListOfMovies>
-                    </Grid>
-                </ListItem>
-                <Divider classes={{ root: classes.divider }} light={true} />
+                        ></ListOfMovies>{" "}
+                    </Grid>{" "}
+                </ListItem>{" "}
+                <Divider classes={{ root: classes.divider }} light={true} />{" "}
                 <ListItem disableGutters={true}>
-                    <MovieTitle header="Favourites"></MovieTitle>
-                </ListItem>
+                    <MovieTitle header="Favourites"> </MovieTitle>{" "}
+                </ListItem>{" "}
                 <ListItem>
                     <Grid
                         container
@@ -67,11 +68,12 @@ function Home(props) {
                             favourite={props.favourite}
                             favouriteProp={RemoveFavourite}
                             removeFavourite={props.removeFavourite}
-                        ></ListOfFavourite>
-                    </Grid>
-                </ListItem>
-                <Divider classes={{ root: classes.divider }} light={true} />
-            </List>
+                        ></ListOfFavourite>{" "}
+                    </Grid>{" "}
+                </ListItem>{" "}
+                <Divider classes={{ root: classes.divider }} light={true} />{" "}
+                <SignIn></SignIn>
+            </List>{" "}
         </div>
     );
 }
