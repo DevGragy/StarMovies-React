@@ -72,7 +72,6 @@ function Home(props) {
                     </Grid>{" "}
                 </ListItem>{" "}
                 <Divider classes={{ root: classes.divider }} light={true} />{" "}
-                <SignIn></SignIn>
             </List>{" "}
         </div>
     );
