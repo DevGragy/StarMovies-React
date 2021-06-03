@@ -13,7 +13,6 @@ import Divider from "@material-ui/core/Divider";
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core";
 import ListOfFavourite from "./ListOfFavourite";
-import SignIn from "./SignIn";
 
 const useStyles = makeStyles({
     divider: {
