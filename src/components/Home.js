@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Title from "./Title";
 import Header from "./Header";
 import InputSearch from "./InputSearch";
 import MovieTitle from "./MovieTitle";
@@ -25,7 +26,8 @@ function Home(props) {
 
     return (
         <div className="star-movies">
-            <Header> </Header>{" "}
+            <Header history={props.history}></Header>{" "}
+            <Title> </Title>{" "}
             <InputSearch
                 search={props.search}
                 setSearch={props.setSearch}
@@ -72,7 +74,7 @@ function Home(props) {
                     </Grid>{" "}
                 </ListItem>{" "}
                 <Divider classes={{ root: classes.divider }} light={true} />{" "}
-                <SignIn></SignIn>
+                {/* <SignIn></SignIn> */}
             </List>{" "}
         </div>
     );

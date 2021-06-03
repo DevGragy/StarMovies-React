@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function SignIn(props) {
+function SignUp(props) {
     const classes = useStyles();
 
     return (
@@ -57,9 +57,9 @@ function SignIn(props) {
                     <LockOutlinedIcon />
                 </Avatar>{" "}
                 <Typography component="h1" variant="h5">
-                    Sign in
+                    Sign up
                 </Typography>{" "}
-                <form className={classes.form} onSubmit={props.handleSubmitSignIn} noValidate>
+                <form className={classes.form} onSubmit={props.handleSubmitSignUp} noValidate>
                     <TextField
                         variant="outlined"
                         margin="normal"
@@ -86,10 +86,6 @@ function SignIn(props) {
                         value={props.password}
                         onChange={(e) => props.setPassword(e.target.value)}
                     />
-                    <FormControlLabel
-                        control={<Checkbox value="remember" color="primary" />}
-                        label="Remember me"
-                    />
                     <Button
                         type="submit"
                         fullWidth
@@ -97,21 +93,8 @@ function SignIn(props) {
                         color="primary"
                         className={classes.submit}
                     >
-                        Sign In{" "}
+                        Sign Up{" "}
                     </Button>{" "}
-                    <Grid container>
-                        <Grid item xs>
-                            <Link href="#" variant="body2">
-                                Forgot password ?
-                            </Link>{" "}
-                        </Grid>{" "}
-                        <Grid item>
-                            <Link href="/signup" variant="body2">
-                                {" "}
-                                {"Don't have an account? Sign Up"}{" "}
-                            </Link>{" "}
-                        </Grid>{" "}
-                    </Grid>{" "}
                 </form>{" "}
             </div>{" "}
             <Box mt={8}>
@@ -121,4 +104,4 @@ function SignIn(props) {
     );
 }
 
-export default SignIn;
+export default SignUp;

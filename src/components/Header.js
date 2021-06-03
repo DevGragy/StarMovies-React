@@ -1,12 +1,31 @@
 import React from "react";
 import Box from '@material-ui/core/Box';
+import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
 
-import "../css/header.css";
+
+const useStyles = makeStyles((theme) => ({
+    submit: {
+        margin: theme.spacing(3, 0, 2),
+    },
+}));
+
 
 function Header(props) {
+    const classes = useStyles();
+
     return (
-        <Box display="flex" justifyContent="center" alignItems="center" m={10}> 
-            <h1>StarMovies</h1>
+        <Box display="flex" justifyContent="flex-end" alignItems="center" m={0}>
+            <Button
+                        type="submit"
+                        variant="contained"
+                        color="primary"
+                        className={classes.submit}
+                        onClick={() => props.history.push('/signin')}
+            >
+                        Login{" "}
+                       
+            </Button>{" "}
         </Box>
     );
 }
