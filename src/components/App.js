@@ -19,7 +19,7 @@ function App(props) {
     const [password, setPassword] = useState("");
 
     const fetchAPI = async (search) => {
-        const URL = `http://www.omdbapi.com/?s=${search}&apikey=e8d51da1`;
+        const URL = `https://www.omdbapi.com/?s=${search}&apikey=e8d51da1`;
         const response = await fetch(URL);
         const responseJSON = await response.json();
 
