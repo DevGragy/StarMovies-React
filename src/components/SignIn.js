@@ -5,7 +5,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import Link from "@material-ui/core/Link";
+import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
@@ -15,7 +15,7 @@ import Container from "@material-ui/core/Container";
 
 function Copyright() {
     return (
-        <Typography variant="body2" color="textSecondary" align="center">
+        <Typography variant="body2" color="primary" align="center">
             {" "}
             {"Copyright © "}{" "}
             <Link color="inherit" href="https://material-ui.com/">
@@ -40,10 +40,20 @@ const useStyles = makeStyles((theme) => ({
     form: {
         width: "100%", // Fix IE 11 issue.
         marginTop: theme.spacing(1),
+        color: "white",
     },
     submit: {
         margin: theme.spacing(3, 0, 2),
     },
+    textfield: {
+        backgroundColor: "white",
+    },
+    title: {
+        color: "white",
+    },
+    checkbox:{
+        color: "white",
+    }
 }));
 
 function SignIn(props) {
@@ -56,11 +66,12 @@ function SignIn(props) {
                 <Avatar className={classes.avatar}>
                     <LockOutlinedIcon />
                 </Avatar>{" "}
-                <Typography component="h1" variant="h5">
+                <Typography component="h1" variant="h5" className={classes.title}>
                     Sign in
                 </Typography>{" "}
                 <form className={classes.form} onSubmit={props.handleSubmitSignIn} noValidate>
                     <TextField
+                        className = {classes.textfield}
                         variant="outlined"
                         margin="normal"
                         required
@@ -74,6 +85,7 @@ function SignIn(props) {
                         onChange={(e) => props.setEmail(e.target.value)}
                     />
                     <TextField
+                        className = {classes.textfield}
                         variant="outlined"
                         margin="normal"
                         required
@@ -87,7 +99,7 @@ function SignIn(props) {
                         onChange={(e) => props.setPassword(e.target.value)}
                     />
                     <FormControlLabel
-                        control={<Checkbox value="remember" color="primary" />}
+                        control={<Checkbox value="remember" color="primary" className = {classes.checkbox} />}
                         label="Remember me"
                     />
                     <Button
@@ -106,7 +118,7 @@ function SignIn(props) {
                             </Link>{" "}
                         </Grid>{" "}
                         <Grid item>
-                            <Link href="/signup" variant="body2">
+                            <Link to="/signup">
                                 {" "}
                                 {"Don't have an account? Sign Up"}{" "}
                             </Link>{" "}

@@ -3,7 +3,7 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import Link from "@material-ui/core/Link";
+import { Link } from "react-router-dom";
 import Box from "@material-ui/core/Box";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
@@ -12,7 +12,7 @@ import Container from "@material-ui/core/Container";
 
 function Copyright() {
     return (
-        <Typography variant="body2" color="textSecondary" align="center">
+        <Typography variant="body2" color="primary" align="center">
             {" "}
             {"Copyright © "}{" "}
             <Link color="inherit" href="https://material-ui.com/">
@@ -41,6 +41,12 @@ const useStyles = makeStyles((theme) => ({
     submit: {
         margin: theme.spacing(3, 0, 2),
     },
+    textfield: {
+        backgroundColor: "white",
+    },
+    title: {
+        color: "white",
+    }
 }));
 
 function SignUp(props) {
@@ -53,11 +59,12 @@ function SignUp(props) {
                 <Avatar className={classes.avatar}>
                     <LockOutlinedIcon />
                 </Avatar>{" "}
-                <Typography component="h1" variant="h5">
+                <Typography component="h1" variant="h5" className={classes.title}>
                     Sign up
                 </Typography>{" "}
                 <form className={classes.form} onSubmit={props.handleSubmitSignUp} noValidate>
                     <TextField
+                        className = {classes.textfield}
                         variant="outlined"
                         margin="normal"
                         required
@@ -71,6 +78,7 @@ function SignUp(props) {
                         onChange={(e) => props.setEmail(e.target.value)}
                     />
                     <TextField
+                        className = {classes.textfield}
                         variant="outlined"
                         margin="normal"
                         required
