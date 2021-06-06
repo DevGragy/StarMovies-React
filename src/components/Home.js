@@ -81,7 +81,7 @@ function Home(props) {
 
 Home.propTypes = {
     search: PropTypes.string.isRequired,
-    setSearch: PropTypes.string.isRequired,
+    setSearch: PropTypes.func.isRequired,
     movies: PropTypes.array.isRequired,
 };
 

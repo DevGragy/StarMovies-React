@@ -46,23 +46,23 @@ function App(props) {
     const handleSubmitSignUp = (e) => {  
         e.preventDefault();      
     axios
-      .post("https://smlogin.herokuapp.com/signup", {email: email, password: password})
-      .then((response) => {
-        console.log(response);
-      }, (error) => {
-        console.log(error);
-      });
+        .post("https://smlogin.herokuapp.com/signup", null, { params: {email, password}})
+        .then((response) => {
+            console.log(response);
+        }, (error) => {
+            console.log(error);
+        });
     }
 
     const handleSubmitSignIn = (e) => {  
         e.preventDefault();      
     axios
-      .post("https://smlogin.herokuapp.com/signin", {email: email, password: password})
-      .then((response) => {
-        console.log(response);
-      }, (error) => {
-        console.log(error);
-      });
+        .post("https://smlogin.herokuapp.com/signin", null, { params: {email, password}})
+        .then((response) => {
+            console.log(response);
+        }, (error) => {
+            console.log(error);
+        });
     }
       
     return (

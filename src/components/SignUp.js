@@ -15,8 +15,8 @@ function Copyright() {
         <Typography variant="body2" color="primary" align="center">
             {" "}
             {"Copyright © "}{" "}
-            <Link color="inherit" href="https://material-ui.com/">
-                Your Website{" "}
+            <Link color="inherit" to="/">
+                StarMovies{" "}
             </Link>{" "}
             {new Date().getFullYear()} {"."}{" "}
         </Typography>
@@ -43,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
     },
     textfield: {
         backgroundColor: "white",
+        borderRadius: 5
     },
     title: {
         color: "white",

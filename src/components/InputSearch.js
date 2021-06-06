@@ -7,7 +7,7 @@ import SearchIcon from "@material-ui/icons/Search";
 function InputSearch(props) {
     return (
         <Grid container spacing={3}>
-            <Grid item xs={0} sm={4}></Grid>
+            <Grid item sm={4}></Grid>
             <Grid item xs={12} sm={4}>
                 <Input
                     color="primary"
@@ -23,7 +23,7 @@ function InputSearch(props) {
                     }
                 />
             </Grid>
-            <Grid item xs={0} sm={4}></Grid>
+            <Grid item sm={4}></Grid>
         </Grid>
     );
 }
