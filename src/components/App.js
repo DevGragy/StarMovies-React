@@ -9,7 +9,7 @@ import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import axios from 'axios';
 
-const URL = `http://www.omdbapi.com/?s=&apikey=e8d51da1`;
+const URL = `https://www.omdbapi.com/?s=&apikey=e8d51da1`;
 
 function App(props) {
     const [movies, setMovies] = useState([]);
