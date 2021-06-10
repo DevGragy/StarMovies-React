@@ -24,25 +24,9 @@ El proyecto de React cuenta con los siguientes componentes:
 -   AddToFavourite. Este componente añade al poster mostrado de la película la opción de añadir a favoritos. 
 -   RemoveFavourite. Este componente añade al póster mostrado de la película la opción de remover de favoritos.
 
-## Scripts
+## Netlify
 
-Antes de utilizar el proyecto es necesario instalar la libreria de Material UI y su paquete de iconos, para ello se abre la consola y se utilizan los siguientes comandos: 
-
-### `npm install @material-ui/core`
-### `npm install @material-ui/icons`
-
-También es necesario instalar la librería de React Router DOM, para ello abrimos la consola y ejecutamos el siguiente comando:
-
-### `npm install react-router-dom`
-
-Para iniciar la aplicación se abre la consola y se utiliza el comando:
-
-### `npm start`
-
-Este comando inicia la aplicación en modo de desarollo y abre [http://localhost:3000](http://localhost:3000) para verla en el navegador.
-
-La página se recargará si realiza modificaciones. \
-También se verán los errores en la consola.
+El sitio en funcionamiento se puede consultar en el siguiente [enlace](https://starmoviesreact.netlify.app/).
 
 ## Autores
 
@@ -51,4 +35,4 @@ También se verán los errores en la consola.
 
 ## Agradecimientos
 
-Agradecemos a BEDU por darnos la oportunidad de compartir los conocimientos adquiridos en la practica de un sistema backend, muchas gracias por todo el apoyo.
+Agradecemos a BEDU por darnos la oportunidad de compartir los conocimientos adquiridos durante este curso de Desarollo Web, muchas gracias por todo el apoyo.
