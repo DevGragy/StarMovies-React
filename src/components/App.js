@@ -7,129 +7,72 @@ import Error404 from "./Error404";
 import InfoMovie from "./InfoMovie";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
-import axios from 'axios';
 
 const URL = `https://www.omdbapi.com/?s=&apikey=e8d51da1`;
 
 function App(props) {
-    const [movies, setMovies] = useState([]);
-    const [search, setSearch] = useState("");
-    const [favourite, setFavourite] = useState([]);
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+  const [movies, setMovies] = useState([]);
+  const [search, setSearch] = useState("");
+  const [favourite, setFavourite] = useState([]);
 
-    const fetchAPI = async (search) => {
-        const URL = `https://www.omdbapi.com/?s=${search}&apikey=e8d51da1`;
-        const response = await fetch(URL);
-        const responseJSON = await response.json();
+  const fetchAPI = async (search) => {
+    const URL = `https://www.omdbapi.com/?s=${search}&apikey=e8d51da1`;
+    const response = await fetch(URL);
+    const responseJSON = await response.json();
 
-        if (responseJSON.Search) return setMovies(responseJSON.Search);
-    };
+    if (responseJSON.Search) return setMovies(responseJSON.Search);
+  };
 
-    const addFavourite = (movie) => {
-        const newFavList = [...favourite, movie];
-        setFavourite(newFavList);
-    };
+  const addFavourite = (movie) => {
+    const newFavList = [...favourite, movie];
+    setFavourite(newFavList);
+  };
 
-    const removeFavourite = (movie) => {
-        const newFavList = favourite.filter(
-            (fav) => fav.imdbID !== movie.imdbID
-        );
+  const removeFavourite = (movie) => {
+    const newFavList = favourite.filter((fav) => fav.imdbID !== movie.imdbID);
+    setFavourite(newFavList);
+  };
 
-        setFavourite(newFavList);
-    };
+  useEffect(() => {
+    fetchAPI(search);
+  }, [search]);
 
-    useEffect(() => {
-        fetchAPI(search);
-    }, [search]);
-
-    const handleSubmitSignUp = (e) => {  
-        e.preventDefault();      
-    axios
-        .post("https://smlogin.herokuapp.com/signup", null, { params: {email, password}})
-        .then((response) => {
-            console.log(response);
-        }, (error) => {
-            console.log(error);
-        });
-    }
-
-    const handleSubmitSignIn = (e) => {  
-        e.preventDefault();      
-    axios
-        .post("https://smlogin.herokuapp.com/signin", null, { params: {email, password}})
-        .then((response) => {
-            console.log(response);
-        }, (error) => {
-            console.log(error);
-        });
-    }
-      
-    return (
-        <Container>
-            <Router>
-                <Switch>
-                    <Route
-                        exact
-                        path="/"
-                        render={(props) => (
-                            <Home
-                                {...props}
-                                search={search}
-                                setSearch={setSearch}
-                                movies={movies}
-                                setMovies={setMovies}
-                                favourite={favourite}
-                                setFavourite={setFavourite}
-                                addFavourite={addFavourite}
-                                removeFavourite={removeFavourite}
-                            />
-                        )}
-                    ></Route>{" "}
-                    <Route
-                        path="/movies/:id"
-                        render={(props) => (
-                            <InfoMovie {...props} url={URL}>
-                                {" "}
-                            </InfoMovie>
-                        )}
-                    ></Route>
-                    <Route 
-                        path="/signin"
-                        render={(props) => (
-                            <SignIn
-                            {...props} 
-                            email={email} 
-                            password={password}
-                            setEmail={setEmail}
-                            setPassword={setPassword}
-                            handleSubmitSignIn={handleSubmitSignIn}
-                            >
-                            </SignIn>
-                        )}
-                    ></Route>
-                    <Route
-                        path="/signup"
-                        render={(props) => (
-                            <SignUp
-                            {...props} 
-                            email={email} 
-                            password={password}
-                            setEmail={setEmail}
-                            setPassword={setPassword} 
-                            handleSubmitSignUp={handleSubmitSignUp}
-                            >
-                            </SignUp>
-                        )}>
-                        
-                    </Route>
-                    <Route path="*" component={Error404}>
-  
-                    </Route>
-                </Switch>{" "}
-            </Router>{" "}
-        </Container>
-    );
+  return (
+    <Container>
+      <Router>
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={(props) => (
+              <Home
+                {...props}
+                search={search}
+                setSearch={setSearch}
+                movies={movies}
+                setMovies={setMovies}
+                favourite={favourite}
+                setFavourite={setFavourite}
+                addFavourite={addFavourite}
+                removeFavourite={removeFavourite}
+              />
+            )}
+          ></Route>{" "}
+          <Route
+            path="/movies/:id"
+            render={(props) => (
+              <InfoMovie {...props} url={URL}>
+                {" "}
+              </InfoMovie>
+            )}
+          ></Route>
+          <Route path="/signin" render={(props) => <SignIn></SignIn>}></Route>
+          <Route path="/signup" render={(props) => <SignUp></SignUp>}></Route>
+          <Route path="*" component={Error404}></Route>
+        </Switch>{" "}
+      </Router>{" "}
+    </Container>
+  );
 }
 
 export default App;
