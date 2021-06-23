@@ -3,8 +3,6 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
 import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
@@ -73,21 +71,42 @@ function SignIn(props) {
     setPassword(event.target.value);
   }
 
+  function validateEmail(email) {
+    const re =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  }
+
   const handleSubmitSignIn = (e) => {
     e.preventDefault();
-    axios
-      .post("https://smlogin.herokuapp.com/signin", null, {
-        params: { email, password },
-      })
-      .then(
-        (response) => {
-          console.log(response);
-          history.push("/");
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+    if (validateEmail(email)) {
+      if (password) {
+        axios
+          .post(
+            "https://smlogin.herokuapp.com/signin",
+            {
+              email: email,
+              password: password,
+            },
+            { withCredentials: true }
+          )
+          .then(
+            (response) => {
+              console.log(response);
+              history.push("/");
+            },
+            (error) => {
+              if (error.response && error.response.data) {
+                alert(error.response.data.message);
+              }
+            }
+          );
+      } else {
+        alert("Enter password");
+      }
+    } else {
+      alert("Enter a valid email adress");
+    }
   };
 
   return (
@@ -127,16 +146,6 @@ function SignIn(props) {
             autoComplete="current-password"
             onChange={onChangePassword}
           />
-          <FormControlLabel
-            control={
-              <Checkbox
-                value="remember"
-                color="primary"
-                className={classes.checkbox}
-              />
-            }
-            label="Remember me"
-          />
           <Button
             type="submit"
             fullWidth
@@ -146,12 +155,7 @@ function SignIn(props) {
           >
             Sign In{" "}
           </Button>{" "}
-          <Grid container>
-            <Grid item xs>
-              <Link to="/#" variant="body2">
-                Forgot password ?
-              </Link>{" "}
-            </Grid>{" "}
+          <Grid container display="flex" justify="center">
             <Grid item>
               <Link to="/signup"> {"Don't have an account? Sign Up"} </Link>{" "}
             </Grid>{" "}

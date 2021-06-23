@@ -50,6 +50,10 @@ const useStyles = makeStyles((theme) => ({
   title: {
     color: "white",
   },
+  info: {
+    fontSize: 11,
+    color: "#999",
+  },
 }));
 
 function SignUp(props) {
@@ -66,23 +70,48 @@ function SignUp(props) {
     setPassword(event.target.value);
   }
 
+  function validateEmail(email) {
+    const re =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  }
+
+  function validatePassword(password) {
+    const re = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+$).{6,}$/;
+    return re.test(String(password));
+  }
+
   const handleSubmitSignUp = (e) => {
     e.preventDefault();
-    axios
-      .post("https://smlogin.herokuapp.com/signup", null, {
-        params: { email, password },
-      })
-      .then(
-        (response) => {
-          console.log(response);
-          alert("Usuario nuevo creado con éxito");
-          history.push("/signin");
-        },
-        (error) => {
-          console.log(error);
-          alert("Ocurrió un error al crear el usuario");
-        }
-      );
+
+    if (validateEmail(email)) {
+      if (validatePassword(password)) {
+        axios
+          .post(
+            "https://smlogin.herokuapp.com/signup",
+            {
+              email: email,
+              password: password,
+            },
+            { withCredentials: true }
+          )
+          .then(
+            (response) => {
+              alert(response.data.message);
+              history.push("/signin");
+            },
+            (error) => {
+              if (error.response && error.response.data) {
+                alert(error.response.data.message);
+              }
+            }
+          );
+      } else {
+        alert("Enter a valid password");
+      }
+    } else {
+      alert("Enter a valid email adress");
+    }
   };
 
   return (
@@ -122,6 +151,10 @@ function SignUp(props) {
             autoComplete="current-password"
             onChange={onChangePassword}
           />
+          <p className={classes.info}>
+            * Password must be at least 6 characters long and contain at least
+            one lower case letter, one capital letter and one number{" "}
+          </p>
           <Button
             type="submit"
             fullWidth
