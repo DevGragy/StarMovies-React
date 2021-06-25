@@ -27,7 +27,6 @@ const useStyles = makeStyles({
         color: "white",
         background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
         "&:hover": {
-            //you want this to be the same as the backgroundColor above
             background: "linear-gradient(45deg, #e66465 90%, #FE6B8B 30%)",
         },
     },
@@ -97,7 +96,7 @@ function InfoMovie(props) {
                         <img
                             className={classes.poster}
                             src={movies.Poster}
-                            alt="Movie"
+                            alt={movies.Title}
                         ></img>
                     </Box>
                 </Grid>
