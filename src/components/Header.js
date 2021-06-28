@@ -37,7 +37,7 @@ function Header(props) {
       .then((response) => {
         console.log(response.data);
         setData(null);
-        props.history.push("/");
+        window.location.reload();
       });
   };
 
