@@ -92,7 +92,6 @@ function SignIn(props) {
           )
           .then(
             (response) => {
-              console.log(response);
               history.push("/");
             },
             (error) => {
